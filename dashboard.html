@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habito Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR TOGGLE BUTTON -->
+    <button id="toggleSidebar" class="toggle-btn">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <h2 class="logo">Habito</h2>
+
+        <div id="userBox" class="user-box">
+            <p id="userName"></p>
+            <p id="userEmail"></p>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="main">
+
+        <!-- Moving Motivational Text -->
+        <div class="motivational-ticker">
+            <marquee behavior="scroll" direction="left">
+                 Winter Arc is coming — become the strongest version of yourself! |
+                 Consistency is your superpower! |
+                 Small habits → Big results! |
+                 Discipline beats motivation — daily wins matter! |
+                 Rebuild. Refocus. Rise again!
+            </marquee>
+        </div>
+
+        <!-- Dynamic motivational sentence -->
+        <section class="motive-box">
+            <p id="motiveText"></p>
+        </section>
+
+        <!-- Advanced Analytics -->
+        <section class="analysis-box" style="margin-top:14px;">
+            <h2> Advanced Analytics</h2>
+            <div id="advancedRow" style="display:flex; gap:12px; flex-wrap:wrap;">
+                <div class="graph-card" style="flex:1 1 220px;">
+                    <h4>Avg Completion (window)</h4>
+                    <div id="advAvgCompletion">-</div>
+                </div>
+                <div class="graph-card" style="flex:1 1 220px;">
+                    <h4>Consistency / Variance</h4>
+                    <div id="advVariance">-</div>
+                </div>
+                <div class="graph-card" style="flex:1 1 220px;">
+                    <h4>Recent Improvement</h4>
+                    <div id="advImprovement">-</div>
+                </div>
+                <div class="graph-card" style="flex:1 1 220px;">
+                    <h4>Top Active Day</h4>
+                    <div id="advTopDay">-</div>
+                </div>
+            </div>
+
+            <div style="margin-top:8px;">
+                <h4>Per-habit summary</h4>
+                <div id="advTable" style="overflow:auto; max-height:220px; background:#071029; padding:8px; border-radius:6px;"></div>
+            </div>
+        </section>
+
+        <!-- Add Habit -->
+        <div class="topBar">
+            <h1>Your Habits</h1>
+            <div style="display:flex; gap:8px; align-items:center;">
+                <button id="undoBtn" class="small-btn" title="Undo (history)">Undo</button>
+                <button id="redoBtn" class="small-btn" title="Redo (history)">Redo</button>
+                <button id="addHabitBtn" class="add-btn">+ Add Habit</button>
+            </div>
+        </div>
+
+        <!-- Analysis Section -->
+        <section class="analysis-box">
+            <h2> Habit Insights</h2>
+            <div class="kpi-row" style="display:flex; gap:12px; margin-bottom:8px;">
+                <div class="kpi" style="padding:8px; background:#172554; color:#fff; border-radius:6px;">Total Sessions: <strong id="kpiTotal">0</strong></div>
+                <div class="kpi" style="padding:8px; background:#1f2937; color:#fff; border-radius:6px;">Avg / day: <strong id="kpiAvgDay">0</strong></div>
+                <div class="kpi" style="padding:8px; background:#064e3b; color:#fff; border-radius:6px;">Longest Streak: <strong id="kpiLongest">0</strong></div>
+                <div class="kpi" style="padding:8px; background:#78350f; color:#fff; border-radius:6px;">Leader: <strong id="kpiLeader">-</strong></div>
+            </div>
+            <p id="bestHabit"></p>
+            <p id="worstHabit"></p>
+            <p id="consistencyPercent"></p>
+
+            <!-- Graphs -->
+            <div class="graphs-row">
+                <div class="graph-card">
+                    <h3>Habit Streaks (per habit)</h3>
+                    <canvas id="habitChart" width="300" height="150"></canvas>
+                </div>
+                <div class="graph-card">
+                    <h3>Daily Logins (last 14 days)</h3>
+                    <canvas id="dailyChart" width="300" height="150"></canvas>
+                </div>
+            </div>
+
+            <!-- Timeline (zoomable + selection) -->
+            <div class="graph-card timeline-card" style="margin-top:12px;">
+                <h3>Timeline (zoomable)</h3>
+                <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
+                    <button id="selectRangeBtn" class="small-btn">Select Range</button>
+                    <button id="clearRangeBtn" class="small-btn">Clear Selection</button>
+                    <button id="exportRangeBtn" class="small-btn">Export Selected Range</button>
+                    <div id="selectedRangeLabel" style="margin-left:8px; color:#bde"></div>
+                </div>
+                <div style="position:relative;">
+                    <canvas id="timelineChart" width="900" height="140"></canvas>
+                    <div id="timelineSelection" style="position:absolute; left:0; top:0; height:100%; pointer-events:none; display:none;"></div>
+                </div>
+            </div>
+
+            <div class="analysis-actions" style="margin-top:12px;">
+                <button id="exportBtn" class="small-btn">Export Habits</button>
+                <button id="exportCsvBtn" class="small-btn">Export CSV</button>
+                <button id="exportAnalyticsCsvBtn" class="small-btn">Export Analytics CSV</button>
+                <button id="exportReportBtn" class="small-btn">Export Report</button>
+                <button id="importBtn" class="small-btn">Import Habits</button>
+                <button id="remindersBtn" class="small-btn">Reminders</button>
+                <input id="importFile" type="file" accept="application/json" style="display:none" />
+                <button id="resetBtn" class="small-btn">Reset All Habits</button>
+                <button id="seedDemoBtn" class="small-btn">Seed Demo Data</button>
+                <button id="resetZoomBtn" class="small-btn">Reset Zoom</button>
+                    <button id="syncBtn" class="small-btn">Sync Now</button>
+                    <label style="margin-left:8px; display:inline-flex; align-items:center; gap:6px;">
+                        <input id="autoSyncToggle" type="checkbox" /> Auto-sync
+                    </label>
+                    <span id="syncStatus" style="margin-left:10px; color:#bde; font-size:13px;">Idle</span>
+                    <span id="lastSync" style="margin-left:8px; color:#9cc; font-size:12px;"></span>
+                <div style="margin-left:12px; display:flex; gap:6px; align-items:center;">
+                    <span style="color:#bde; font-size:13px; margin-right:6px;">Zoom:</span>
+                    <button id="range7" class="small-btn">7d</button>
+                    <button id="range14" class="small-btn">14d</button>
+                    <button id="range30" class="small-btn">30d</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Habit Cards -->
+        <div id="habitContainer" class="habit-container"></div>
+
+    </main>
+
+    <!-- habit detail modal -->
+    <div id="habitModal" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); background:#0b1220; color:#fff; padding:16px; border-radius:8px; z-index:60; width:80%; max-width:720px; box-shadow:0 8px 30px rgba(0,0,0,0.6)">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+            <strong id="modalTitle">Habit Details</strong>
+            <div>
+                <button id="modalExport" class="small-btn">Export CSV</button>
+                <button id="modalClose" class="small-btn">Close</button>
+            </div>
+        </div>
+        <div id="modalBody" style="max-height:360px; overflow:auto; font-size:14px;"></div>
+    </div>
+
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Zoom Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

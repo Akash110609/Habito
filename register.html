@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habito</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="register.css">
+
+
+</head>
+
+<body>
+    <div class="bg_login">
+        <video id="background-video" autoplay loop muted poster="poster.jpg">
+            <source src="bg_login.mp4" type="video/mp4">
+        </video>
+        <div class="container_login">
+            <div class="form-box login">
+                <h2>Register </h2>
+                <form action="#">
+                    <div class="input-box_login">
+                        <label for="">Username(Email)</label>
+                        <i class="fa fa-user"></i>
+                        <input type="email" id="regEmail" required class="input_login">
+                    </div>
+                    <div class="input-box_login">
+                        <label for="">Create_Password</label>
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="regPass" required class="input_login">
+                    </div>
+                    <div class="input-box_login">
+                        <label for="">Confirm_Password</label>
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="regCPass" required class="input_login">
+                    </div>
+                    <div class="input-box_login" >
+                        <button type="submit" class="btn_login">Register</button>
+                    </div>
+                    <div class="input-box_login" id="regi-link_login">
+                        <a href="./login.html" class="btn_login1">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <header class="header_login">
+        <div class="nav_login">
+            <nav>
+                <button class="backbtn_login" onclick="history.back()"> <i class="fa fa-arrow-left"></i> Back
+
+                </button>
+
+            </nav>
+
+    </header>
+    <script src="register.js"></script>
+
+</body>
+
+</html>

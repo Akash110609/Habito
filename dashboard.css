@@ -1,0 +1,362 @@
+/* ===========================
+        GLOBAL STYLE
+=========================== */
+body {
+    margin: 0;
+    font-family: Poppins, sans-serif;
+    background: #0c0c0c;
+    color: white;
+}
+
+/* ===========================
+           SIDEBAR
+=========================== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    padding: 25px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.user-box {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ff4040;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .3s;
+}
+.logout-btn:hover {
+    background: #d60000;
+}
+
+/* ===========================
+           MAIN BODY
+=========================== */
+.main {
+    margin-left: 270px;
+    padding: 30px;
+}
+
+/* MOVING TEXT STRIP */
+.motivational-ticker {
+    background: rgba(255,255,255,0.12);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    font-size: 17px;
+    font-weight: 600;
+    color: #00ffd5;
+}
+
+/* ===========================
+     AUTO-CHANGING MOTIVE BOX
+=========================== */
+.motive-box {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(0,255,204,0.13), rgba(0,128,255,0.14));
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 25px;
+}
+
+#motiveText {
+    text-align: center;
+    font-size: 22px;
+    color: #00ffbf;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+         TOP HABIT BAR
+=========================== */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    background: #00c853;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.add-btn:hover {
+    background: #009e42;
+}
+
+/* ===========================
+        ANALYSIS SECTION
+=========================== */
+.analysis-box {
+    padding: 20px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 30px;
+}
+
+.graphs-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.graph-card { flex: 1 1 320px; background: rgba(255,255,255,0.04); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); }
+.graph-card h3 { margin: 0 0 8px 0; color: #a7f3d0; font-size: 14px; }
+
+.analysis-actions { display:flex; gap:8px; align-items:center }
+.small-btn { padding:6px 10px; border-radius:8px; background:#2563eb; color:#fff; border:none; cursor:pointer; }
+.small-btn:hover { opacity:0.9 }
+.miniChart { width:100%; height:60px; }
+
+.analysis-box h2 {
+    margin: 0 0 15px 0;
+    color: #00ffd5;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.analysis-card {
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: center;
+}
+
+.analysis-card h3 {
+    margin: 0 0 10px 0;
+    color: #00eaff;
+}
+
+.analysis-card p {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ===========================
+        HABIT CARDS
+=========================== */
+.habit-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.habit-card {
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.14);
+    animation: fadeIn .4s ease-in-out;
+}
+
+.habit-card.dragging {
+    opacity: 0.6;
+    transform: scale(0.99);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.drag-placeholder {
+    border: 2px dashed rgba(255,255,255,0.08);
+    border-radius: 12px;
+    min-height: 80px;
+}
+
+.habit-title {
+    font-size: 19px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.goal-area { display:flex; gap:10px; align-items:center; margin-top:8px; }
+.goal-area svg { background: transparent; border-radius:50%; }
+.goal-area .goal-controls { display:flex; flex-direction:column; gap:6px; }
+.goal-area .goal-controls .small-btn { padding:6px 8px; font-size:13px }
+
+.goal-ring-bg { stroke: rgba(255,255,255,0.06); fill: none; }
+.goal-ring-fg { stroke-width:8; stroke-linecap:round; fill:none; transition: stroke-dashoffset 700ms cubic-bezier(.2,.9,.3,1), stroke 300ms; }
+
+/* pulse when goal reached */
+.goal-ring-pulse { animation: pulse 1s ease-out 3; }
+@keyframes pulse { 0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); } 50% { transform: scale(1.06); filter: drop-shadow(0 6px 18px rgba(16,185,129,0.12)); } 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0,0,0,0)); } }
+
+/* tooltip for ring */
+.goal-tooltip { position:fixed; background:rgba(3,7,18,0.95); color:#dff; padding:8px 10px; border-radius:8px; font-size:13px; box-shadow:0 6px 18px rgba(0,0,0,0.6); z-index:9999; pointer-events:none; max-width:300px; }
+
+/* confetti */
+.confetti-piece { position:fixed; width:10px; height:6px; opacity:0.95; transform-origin:center; border-radius:2px; z-index:9999; pointer-events:none; animation: confetti-fall 1200ms linear forwards; }
+@keyframes confetti-fall { 0% { transform: translateY(0) rotate(0deg); opacity:1 } 100% { transform: translateY(420px) rotate(720deg); opacity:0 } }
+
+.track-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.delete-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff3b3b;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: .3s;
+}
+.delete-btn:hover {
+    background: #d80000;
+}
+
+/* ===========================
+       PROGRESS VISUALS
+=========================== */
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.11);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+    display: flex;
+}
+
+.progress-bar .good {
+    background: #00e676;
+    height: 12px;
+}
+
+.progress-bar .bad {
+    background: #ff5252;
+    height: 12px;
+}
+
+.tip {
+    margin-top: 10px;
+    font-style: italic;
+    color: #ddd;
+}
+
+/* ===========================
+        RESPONSIVE
+=========================== */
+@media (max-width: 700px) {
+    .sidebar {
+        width: 200px;
+    }
+    .main {
+        margin-left: 220px;
+    }
+}
+.sidebar {
+    width: 220px;
+    transition: 0.3s;
+}
+
+.sidebar.hide {
+    margin-left: -240px;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #333;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+    border-radius: 5px;
+}
+
+/* Sidebar slide */
+.sidebar {
+    width: 220px;
+    transition: 0.3s;
+}
+
+.sidebar.hide {
+    margin-left: -240px;
+}
+
+/* Toggle Button */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+/* Main auto adjust */
+.main {
+    margin-left: 230px;
+    transition: 0.3s;
+}
+
+.sidebar.hide + .main {
+    margin-left: 20px;
+}
+
+/* Calendar heatmap styles */
+.heatmap-header { display:flex; justify-content:space-between; align-items:center; margin:8px 0; }
+.heatmap-nav button { padding:6px 8px; border-radius:6px; background:#2563eb; color:#fff; border:none; cursor:pointer; }
+.heatmap-grid { display:grid; grid-template-columns: repeat(7, 1fr); gap:6px; margin-top:8px; }
+.heatmap-square { width:100%; padding-top:100%; position:relative; border-radius:4px; background:#071029; cursor:pointer; border:1px solid rgba(255,255,255,0.03); }
+.heatmap-square .inner { position:absolute; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:11px; color:rgba(255,255,255,0.9); }
+.heatmap-legend { display:flex; gap:6px; align-items:center; margin-top:8px; }
+.heatmap-legend .box { width:18px; height:18px; border-radius:3px; }
+.heatmap-month-label { font-weight:700; color:#a7f3d0; }
+/* Timeline selection overlay */
+#timelineSelection { background: rgba(34,197,94,0.12); border-left: 2px solid rgba(34,197,94,0.28); border-right: 2px solid rgba(34,197,94,0.28); }
+.timeline-card { padding:14px; }
+

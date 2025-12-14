@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habito</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="login.css">
+
+
+</head>
+
+<body>
+    <div class="bg_login">
+        <video id="background-video" autoplay loop muted poster="poster.jpg">
+            <source src="bg_login.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="container_login">
+            <div class="form-box login">
+                <h2>Login</h2>
+                <form action="#">
+                    <div class="input-box_login">
+                        <label for="">Username</label>
+                        <i class="fa fa-user"></i>
+                        <input type="email" id="loginEmail" required class="input_login">
+                    </div>
+                    <div class="input-box_login">
+                        <label for="">Password</label>
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="loginPassword" required class="input_login">
+                    </div>
+                    <div class="input-box_login">
+                        <button type="submit" class="btn_login">Login</button>
+                    </div>
+                    <div class="regi-link_login">
+                        <p class="advice">Don't have an account?<a href="./register.html" class="register-link_login">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <header class="header_login">
+        <div class="nav_login">
+            <nav>
+                <button class="backbtn_login" onclick="history.back()"> <i class="fa fa-arrow-left"></i> Back
+
+                </button>
+
+            </nav>
+
+    </header>
+    <script src="login.js"></script>
+
+</body>
+
+</html>

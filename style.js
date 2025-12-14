@@ -1,0 +1,1 @@
+// minimal style.js\nconsole.log('style.js loaded');
